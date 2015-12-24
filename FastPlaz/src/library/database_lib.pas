@@ -480,7 +480,11 @@ end;
 function TSimpleModel.GetFieldValue(FieldName: String): Variant;
 begin
   if not Data.Active then Exit;
-  Result := Data.FieldByName( FieldName).AsVariant;
+  // Result := Data.FieldByName( FieldName).AsVariant; //this line was original code
+  
+  // tambahan jika kolom menghasilkan data berupa NULL
+  if Data.FieldByName(FieldName).AsVariant = Null then Result := ''
+  else Result := Data.FieldByName(FieldName).AsVariant;     
 end;
 
 procedure TSimpleModel.SetFieldValue(FieldName: String; AValue: Variant);
