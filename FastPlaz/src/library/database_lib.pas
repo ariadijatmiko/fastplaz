@@ -516,7 +516,9 @@ begin
       else
         FTableName := FTableName + ToString[i];
     end;
-    FTableName:= copy( FTableName, 1, Length(FTableName)-6) + 's';
+    //FTableName:= copy( FTableName, 1, Length(FTableName)-6) + 's';
+    
+    FTableName:= copy( FTableName, 1, Length(FTableName)-6);
   end else
     FTableName:= DefaultTableName;
   FTableName:= AppData.tablePrefix+FTableName;
